@@ -1,0 +1,45 @@
+---
+title: "Practical_1_Introduction_to_R"
+author: "Jierui Wang"
+---
+
+```{r}
+round(3.14159)
+round(3.14159, digits = 2)
+```
+
+```{r}
+#order is from to by
+print(seq(1,10,2))
+print(seq(by = 2, from = 1, to = 10))
+```
+```{r}
+#order is x, times
+print(rep(2,5))
+print(rep(5,7))
+print(rep(times = 7, x = 5))
+```
+
+```{r}
+x <- 1
+y <- "hello"
+z <- TRUE
+print(x)
+print(y)
+print(z)
+print(class(x))
+print(class(y))
+print(class(z))
+```
+
+```{r}
+ID1 <- "CX1"
+ID2 <- "CX2"
+treat1 <- TRUE
+treat2 <- FALSE
+numb1 <- 5415
+numb2 <- 8123
+numa1 <- 1432
+numa2 <- 7543
+```
+
