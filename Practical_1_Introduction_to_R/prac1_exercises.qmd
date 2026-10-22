@@ -43,3 +43,67 @@ numa1 <- 1432
 numa2 <- 7543
 ```
 
+```{r}
+library(fortunes)
+fortune()
+```
+```{r}
+library(tidyverse)
+library(gt)
+```
+```{r}
+ID <- c(ID1, ID2)
+numb <- c(numb1, numb2)
+treat <- c(treat1, treat2)
+numa <- c(numa1, numa2)
+```
+
+```{r}
+all_my_pets <- c("dog", "horse", "guinea pig", "chicken", "cat")
+fourth <- all_my_pets[4]
+print(fourth)
+```
+
+```{r}
+cell_data_frame <- tibble(
+cell_id = ID,
+treated = treat,
+num_cells_before = numb,
+num_cells_after = numa,
+)
+print(cell_data_frame)
+gt(cell_data_frame)
+```
+```{r}
+weather <- read_csv("data/weather_data.csv")
+```
+
+```{r}
+gt(weather)
+```
+```{r}
+ggplot(weather)
+ggplot(weather, aes(
+  x = observation_time,
+  y = temperature_c
+))
+```
+
+```{r}
+ggplot(weather, aes(
+  x = observation_time,
+  y = temperature_c
+)) +
+  geom_line()
+```
+```{r}
+ggplot(weather, aes(
+  x = observation_time,
+  y = temperature_c
+)) +
+  geom_line(colour = "red") +
+  xlab("Date") +
+  ylab("Temp (C)") +
+  ggtitle("Temperature by Date")
+```
+

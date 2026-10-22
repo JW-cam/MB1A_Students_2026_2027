@@ -186,6 +186,1197 @@ pre > code.sourceCode > span > a:first-child::before { text-decoration: underlin
 <span id="cb27-7"><a href="#cb27-7" aria-hidden="true" tabindex="-1"></a>numa1 <span class="ot">&lt;-</span> <span class="dv">1432</span></span>
 <span id="cb27-8"><a href="#cb27-8" aria-hidden="true" tabindex="-1"></a>numa2 <span class="ot">&lt;-</span> <span class="dv">7543</span></span></code></pre></div><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></div>
 </div>
+<div class="cell">
+<div class="code-copy-outer-scaffold"><div class="sourceCode cell-code" id="cb28"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb28-1"><a href="#cb28-1" aria-hidden="true" tabindex="-1"></a><span class="fu">library</span>(fortunes)</span>
+<span id="cb28-2"><a href="#cb28-2" aria-hidden="true" tabindex="-1"></a><span class="fu">fortune</span>()</span></code></pre></div><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></div>
+<div class="cell-output cell-output-stdout">
+<pre><code>
+David Hugh-Jones: A short while ago I released the "huxtable" package for
+writing HTML and LaTeX tables. [...] The Huxtables were the family in the Cosby
+show. That would be fine, except that Bill Cosby is now on trial for one case
+of rape, and there are accusations of many other cases. [...] Do you think I
+should change the name?
+Dason Kurkiewicz: It's not like you called your package "ISIS". I would highly
+recommend just not worrying about it.
+   -- David Hugh-Jones and Dason Kurkiewicz (about naming packages and bad
+      associations)
+      R-package-devel (June 2017)</code></pre>
+</div>
+</div>
+<div class="cell">
+<div class="code-copy-outer-scaffold"><div class="sourceCode cell-code" id="cb30"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb30-1"><a href="#cb30-1" aria-hidden="true" tabindex="-1"></a><span class="fu">library</span>(tidyverse)</span></code></pre></div><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></div>
+<div class="cell-output cell-output-stderr">
+<pre><code>── Attaching core tidyverse packages ──────────────────────── tidyverse 2.0.0 ──
+✔ dplyr     1.2.1     ✔ readr     2.2.0
+✔ forcats   1.0.1     ✔ stringr   1.6.0
+✔ ggplot2   4.0.3     ✔ tibble    3.3.1
+✔ lubridate 1.9.5     ✔ tidyr     1.3.2
+✔ purrr     1.2.2     
+── Conflicts ────────────────────────────────────────── tidyverse_conflicts() ──
+✖ dplyr::filter() masks stats::filter()
+✖ dplyr::lag()    masks stats::lag()
+ℹ Use the conflicted package (&lt;http://conflicted.r-lib.org/&gt;) to force all conflicts to become errors</code></pre>
+</div>
+<div class="code-copy-outer-scaffold"><div class="sourceCode cell-code" id="cb32"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb32-1"><a href="#cb32-1" aria-hidden="true" tabindex="-1"></a><span class="fu">library</span>(gt)</span></code></pre></div><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></div>
+</div>
+<div class="cell">
+<div class="code-copy-outer-scaffold"><div class="sourceCode cell-code" id="cb33"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb33-1"><a href="#cb33-1" aria-hidden="true" tabindex="-1"></a>ID <span class="ot">&lt;-</span> <span class="fu">c</span>(ID1, ID2)</span>
+<span id="cb33-2"><a href="#cb33-2" aria-hidden="true" tabindex="-1"></a>numb <span class="ot">&lt;-</span> <span class="fu">c</span>(numb1, numb2)</span>
+<span id="cb33-3"><a href="#cb33-3" aria-hidden="true" tabindex="-1"></a>treat <span class="ot">&lt;-</span> <span class="fu">c</span>(treat1, treat2)</span>
+<span id="cb33-4"><a href="#cb33-4" aria-hidden="true" tabindex="-1"></a>numa <span class="ot">&lt;-</span> <span class="fu">c</span>(numa1, numa2)</span></code></pre></div><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></div>
+</div>
+<div class="cell">
+<div class="code-copy-outer-scaffold"><div class="sourceCode cell-code" id="cb34"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb34-1"><a href="#cb34-1" aria-hidden="true" tabindex="-1"></a>all_my_pets <span class="ot">&lt;-</span> <span class="fu">c</span>(<span class="st">"dog"</span>, <span class="st">"horse"</span>, <span class="st">"guinea pig"</span>, <span class="st">"chicken"</span>, <span class="st">"cat"</span>)</span>
+<span id="cb34-2"><a href="#cb34-2" aria-hidden="true" tabindex="-1"></a>fourth <span class="ot">&lt;-</span> all_my_pets[<span class="dv">4</span>]</span>
+<span id="cb34-3"><a href="#cb34-3" aria-hidden="true" tabindex="-1"></a><span class="fu">print</span>(fourth)</span></code></pre></div><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></div>
+<div class="cell-output cell-output-stdout">
+<pre><code>[1] "chicken"</code></pre>
+</div>
+</div>
+<div class="cell">
+<div class="code-copy-outer-scaffold"><div class="sourceCode cell-code" id="cb36"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb36-1"><a href="#cb36-1" aria-hidden="true" tabindex="-1"></a>cell_data_frame <span class="ot">&lt;-</span> <span class="fu">tibble</span>(</span>
+<span id="cb36-2"><a href="#cb36-2" aria-hidden="true" tabindex="-1"></a><span class="at">cell_id =</span> ID,</span>
+<span id="cb36-3"><a href="#cb36-3" aria-hidden="true" tabindex="-1"></a><span class="at">treated =</span> treat,</span>
+<span id="cb36-4"><a href="#cb36-4" aria-hidden="true" tabindex="-1"></a><span class="at">num_cells_before =</span> numb,</span>
+<span id="cb36-5"><a href="#cb36-5" aria-hidden="true" tabindex="-1"></a><span class="at">num_cells_after =</span> numa,</span>
+<span id="cb36-6"><a href="#cb36-6" aria-hidden="true" tabindex="-1"></a>)</span>
+<span id="cb36-7"><a href="#cb36-7" aria-hidden="true" tabindex="-1"></a><span class="fu">print</span>(cell_data_frame)</span></code></pre></div><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></div>
+<div class="cell-output cell-output-stdout">
+<pre><code># A tibble: 2 × 4
+  cell_id treated num_cells_before num_cells_after
+  &lt;chr&gt;   &lt;lgl&gt;              &lt;dbl&gt;           &lt;dbl&gt;
+1 CX1     TRUE                5415            1432
+2 CX2     FALSE               8123            7543</code></pre>
+</div>
+<div class="code-copy-outer-scaffold"><div class="sourceCode cell-code" id="cb38"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb38-1"><a href="#cb38-1" aria-hidden="true" tabindex="-1"></a><span class="fu">gt</span>(cell_data_frame)</span></code></pre></div><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></div>
+<div class="cell-output-display">
+<div id="chfhcbhfcc" style="padding-left:0px;padding-right:0px;padding-top:10px;padding-bottom:10px;overflow-x:auto;overflow-y:auto;width:auto;height:auto;">
+<style>#chfhcbhfcc table {
+  font-family: system-ui, 'Segoe UI', Roboto, Helvetica, Arial, sans-serif, 'Apple Color Emoji', 'Segoe UI Emoji', 'Segoe UI Symbol', 'Noto Color Emoji';
+  -webkit-font-smoothing: antialiased;
+  -moz-osx-font-smoothing: grayscale;
+}
+
+#chfhcbhfcc thead, #chfhcbhfcc tbody, #chfhcbhfcc tfoot, #chfhcbhfcc tr, #chfhcbhfcc td, #chfhcbhfcc th {
+  border-style: none;
+}
+
+#chfhcbhfcc p {
+  margin: 0;
+  padding: 0;
+}
+
+#chfhcbhfcc .gt_table {
+  display: table;
+  border-collapse: collapse;
+  line-height: normal;
+  margin-left: auto;
+  margin-right: auto;
+  color: #333333;
+  font-size: 16px;
+  font-weight: normal;
+  font-style: normal;
+  background-color: #FFFFFF;
+  width: auto;
+  border-top-style: solid;
+  border-top-width: 2px;
+  border-top-color: #A8A8A8;
+  border-right-style: none;
+  border-right-width: 2px;
+  border-right-color: #D3D3D3;
+  border-bottom-style: solid;
+  border-bottom-width: 2px;
+  border-bottom-color: #A8A8A8;
+  border-left-style: none;
+  border-left-width: 2px;
+  border-left-color: #D3D3D3;
+}
+
+#chfhcbhfcc .gt_caption {
+  padding-top: 4px;
+  padding-bottom: 4px;
+}
+
+#chfhcbhfcc .gt_title {
+  color: #333333;
+  font-size: 125%;
+  font-weight: initial;
+  padding-top: 4px;
+  padding-bottom: 4px;
+  padding-left: 5px;
+  padding-right: 5px;
+  border-bottom-color: #FFFFFF;
+  border-bottom-width: 0;
+}
+
+#chfhcbhfcc .gt_subtitle {
+  color: #333333;
+  font-size: 85%;
+  font-weight: initial;
+  padding-top: 3px;
+  padding-bottom: 5px;
+  padding-left: 5px;
+  padding-right: 5px;
+  border-top-color: #FFFFFF;
+  border-top-width: 0;
+}
+
+#chfhcbhfcc .gt_heading {
+  background-color: #FFFFFF;
+  text-align: center;
+  border-bottom-color: #FFFFFF;
+  border-left-style: none;
+  border-left-width: 1px;
+  border-left-color: #D3D3D3;
+  border-right-style: none;
+  border-right-width: 1px;
+  border-right-color: #D3D3D3;
+}
+
+#chfhcbhfcc .gt_bottom_border {
+  border-bottom-style: solid;
+  border-bottom-width: 2px;
+  border-bottom-color: #D3D3D3;
+}
+
+#chfhcbhfcc .gt_col_headings {
+  border-top-style: solid;
+  border-top-width: 2px;
+  border-top-color: #D3D3D3;
+  border-bottom-style: solid;
+  border-bottom-width: 2px;
+  border-bottom-color: #D3D3D3;
+  border-left-style: none;
+  border-left-width: 1px;
+  border-left-color: #D3D3D3;
+  border-right-style: none;
+  border-right-width: 1px;
+  border-right-color: #D3D3D3;
+}
+
+#chfhcbhfcc .gt_col_heading {
+  color: #333333;
+  background-color: #FFFFFF;
+  font-size: 100%;
+  font-weight: normal;
+  text-transform: inherit;
+  border-left-style: none;
+  border-left-width: 1px;
+  border-left-color: #D3D3D3;
+  border-right-style: none;
+  border-right-width: 1px;
+  border-right-color: #D3D3D3;
+  vertical-align: bottom;
+  padding-top: 5px;
+  padding-bottom: 6px;
+  padding-left: 5px;
+  padding-right: 5px;
+  overflow-x: hidden;
+}
+
+#chfhcbhfcc .gt_column_spanner_outer {
+  color: #333333;
+  background-color: #FFFFFF;
+  font-size: 100%;
+  font-weight: normal;
+  text-transform: inherit;
+  padding-top: 0;
+  padding-bottom: 0;
+  padding-left: 4px;
+  padding-right: 4px;
+}
+
+#chfhcbhfcc .gt_column_spanner_outer:first-child {
+  padding-left: 0;
+}
+
+#chfhcbhfcc .gt_column_spanner_outer:last-child {
+  padding-right: 0;
+}
+
+#chfhcbhfcc .gt_column_spanner {
+  border-bottom-style: solid;
+  border-bottom-width: 2px;
+  border-bottom-color: #D3D3D3;
+  vertical-align: bottom;
+  padding-top: 5px;
+  padding-bottom: 5px;
+  overflow-x: hidden;
+  display: inline-block;
+  width: 100%;
+}
+
+#chfhcbhfcc .gt_spanner_row {
+  border-bottom-style: hidden;
+}
+
+#chfhcbhfcc .gt_group_heading {
+  padding-top: 8px;
+  padding-bottom: 8px;
+  padding-left: 5px;
+  padding-right: 5px;
+  color: #333333;
+  background-color: #FFFFFF;
+  font-size: 100%;
+  font-weight: initial;
+  text-transform: inherit;
+  border-top-style: solid;
+  border-top-width: 2px;
+  border-top-color: #D3D3D3;
+  border-bottom-style: solid;
+  border-bottom-width: 2px;
+  border-bottom-color: #D3D3D3;
+  border-left-style: none;
+  border-left-width: 1px;
+  border-left-color: #D3D3D3;
+  border-right-style: none;
+  border-right-width: 1px;
+  border-right-color: #D3D3D3;
+  vertical-align: middle;
+  text-align: left;
+}
+
+#chfhcbhfcc .gt_empty_group_heading {
+  padding: 0.5px;
+  color: #333333;
+  background-color: #FFFFFF;
+  font-size: 100%;
+  font-weight: initial;
+  border-top-style: solid;
+  border-top-width: 2px;
+  border-top-color: #D3D3D3;
+  border-bottom-style: solid;
+  border-bottom-width: 2px;
+  border-bottom-color: #D3D3D3;
+  vertical-align: middle;
+}
+
+#chfhcbhfcc .gt_from_md > :first-child {
+  margin-top: 0;
+}
+
+#chfhcbhfcc .gt_from_md > :last-child {
+  margin-bottom: 0;
+}
+
+#chfhcbhfcc .gt_row {
+  padding-top: 8px;
+  padding-bottom: 8px;
+  padding-left: 5px;
+  padding-right: 5px;
+  margin: 10px;
+  border-top-style: solid;
+  border-top-width: 1px;
+  border-top-color: #D3D3D3;
+  border-left-style: none;
+  border-left-width: 1px;
+  border-left-color: #D3D3D3;
+  border-right-style: none;
+  border-right-width: 1px;
+  border-right-color: #D3D3D3;
+  vertical-align: middle;
+  overflow-x: hidden;
+}
+
+#chfhcbhfcc .gt_stub {
+  color: #333333;
+  background-color: #FFFFFF;
+  font-size: 100%;
+  font-weight: initial;
+  text-transform: inherit;
+  border-right-style: solid;
+  border-right-width: 2px;
+  border-right-color: #D3D3D3;
+  padding-left: 5px;
+  padding-right: 5px;
+}
+
+#chfhcbhfcc .gt_stub_row_group {
+  color: #333333;
+  background-color: #FFFFFF;
+  font-size: 100%;
+  font-weight: initial;
+  text-transform: inherit;
+  border-right-style: solid;
+  border-right-width: 2px;
+  border-right-color: #D3D3D3;
+  padding-left: 5px;
+  padding-right: 5px;
+  vertical-align: top;
+}
+
+#chfhcbhfcc .gt_row_group_first td {
+  border-top-width: 2px;
+}
+
+#chfhcbhfcc .gt_row_group_first th {
+  border-top-width: 2px;
+}
+
+#chfhcbhfcc .gt_summary_row {
+  color: #333333;
+  background-color: #FFFFFF;
+  text-transform: inherit;
+  padding-top: 8px;
+  padding-bottom: 8px;
+  padding-left: 5px;
+  padding-right: 5px;
+}
+
+#chfhcbhfcc .gt_first_summary_row {
+  border-top-style: solid;
+  border-top-color: #D3D3D3;
+}
+
+#chfhcbhfcc .gt_first_summary_row.thick {
+  border-top-width: 2px;
+}
+
+#chfhcbhfcc .gt_last_summary_row {
+  padding-top: 8px;
+  padding-bottom: 8px;
+  padding-left: 5px;
+  padding-right: 5px;
+  border-bottom-style: solid;
+  border-bottom-width: 2px;
+  border-bottom-color: #D3D3D3;
+}
+
+#chfhcbhfcc .gt_grand_summary_row {
+  color: #333333;
+  background-color: #FFFFFF;
+  text-transform: inherit;
+  padding-top: 8px;
+  padding-bottom: 8px;
+  padding-left: 5px;
+  padding-right: 5px;
+}
+
+#chfhcbhfcc .gt_first_grand_summary_row {
+  padding-top: 8px;
+  padding-bottom: 8px;
+  padding-left: 5px;
+  padding-right: 5px;
+  border-top-style: double;
+  border-top-width: 6px;
+  border-top-color: #D3D3D3;
+}
+
+#chfhcbhfcc .gt_last_grand_summary_row_top {
+  padding-top: 8px;
+  padding-bottom: 8px;
+  padding-left: 5px;
+  padding-right: 5px;
+  border-bottom-style: double;
+  border-bottom-width: 6px;
+  border-bottom-color: #D3D3D3;
+}
+
+#chfhcbhfcc .gt_striped {
+  background-color: rgba(128, 128, 128, 0.05);
+}
+
+#chfhcbhfcc .gt_table_body {
+  border-top-style: solid;
+  border-top-width: 2px;
+  border-top-color: #D3D3D3;
+  border-bottom-style: solid;
+  border-bottom-width: 2px;
+  border-bottom-color: #D3D3D3;
+}
+
+#chfhcbhfcc .gt_footnotes {
+  color: #333333;
+  background-color: #FFFFFF;
+  border-bottom-style: none;
+  border-bottom-width: 2px;
+  border-bottom-color: #D3D3D3;
+  border-left-style: none;
+  border-left-width: 2px;
+  border-left-color: #D3D3D3;
+  border-right-style: none;
+  border-right-width: 2px;
+  border-right-color: #D3D3D3;
+}
+
+#chfhcbhfcc .gt_footnote {
+  margin: 0px;
+  font-size: 90%;
+  padding-top: 4px;
+  padding-bottom: 4px;
+  padding-left: 5px;
+  padding-right: 5px;
+}
+
+#chfhcbhfcc .gt_sourcenotes {
+  color: #333333;
+  background-color: #FFFFFF;
+  border-bottom-style: none;
+  border-bottom-width: 2px;
+  border-bottom-color: #D3D3D3;
+  border-left-style: none;
+  border-left-width: 2px;
+  border-left-color: #D3D3D3;
+  border-right-style: none;
+  border-right-width: 2px;
+  border-right-color: #D3D3D3;
+}
+
+#chfhcbhfcc .gt_sourcenote {
+  font-size: 90%;
+  padding-top: 4px;
+  padding-bottom: 4px;
+  padding-left: 5px;
+  padding-right: 5px;
+}
+
+#chfhcbhfcc .gt_left {
+  text-align: left;
+}
+
+#chfhcbhfcc .gt_center {
+  text-align: center;
+}
+
+#chfhcbhfcc .gt_right {
+  text-align: right;
+  font-variant-numeric: tabular-nums;
+}
+
+#chfhcbhfcc .gt_font_normal {
+  font-weight: normal;
+}
+
+#chfhcbhfcc .gt_font_bold {
+  font-weight: bold;
+}
+
+#chfhcbhfcc .gt_font_italic {
+  font-style: italic;
+}
+
+#chfhcbhfcc .gt_super {
+  font-size: 65%;
+}
+
+#chfhcbhfcc .gt_footnote_marks {
+  font-size: 75%;
+  vertical-align: 0.4em;
+  position: initial;
+}
+
+#chfhcbhfcc .gt_asterisk {
+  font-size: 100%;
+  vertical-align: 0;
+}
+
+#chfhcbhfcc .gt_indent_1 {
+  text-indent: 5px;
+}
+
+#chfhcbhfcc .gt_indent_2 {
+  text-indent: 10px;
+}
+
+#chfhcbhfcc .gt_indent_3 {
+  text-indent: 15px;
+}
+
+#chfhcbhfcc .gt_indent_4 {
+  text-indent: 20px;
+}
+
+#chfhcbhfcc .gt_indent_5 {
+  text-indent: 25px;
+}
+
+#chfhcbhfcc .katex-display {
+  display: inline-flex !important;
+  margin-bottom: 0.75em !important;
+}
+
+#chfhcbhfcc div.Reactable > div.rt-table > div.rt-thead > div.rt-tr.rt-tr-group-header > div.rt-th-group:after {
+  height: 0px !important;
+}
+</style>
+
+<table class="gt_table caption-top table table-sm table-striped small" data-quarto-bootstrap="false">
+<thead>
+<tr class="gt_col_headings header">
+<th id="cell_id" class="gt_col_heading gt_columns_bottom_border gt_left" data-quarto-table-cell-role="th" scope="col">cell_id</th>
+<th id="treated" class="gt_col_heading gt_columns_bottom_border gt_center" data-quarto-table-cell-role="th" scope="col">treated</th>
+<th id="num_cells_before" class="gt_col_heading gt_columns_bottom_border gt_right" data-quarto-table-cell-role="th" scope="col">num_cells_before</th>
+<th id="num_cells_after" class="gt_col_heading gt_columns_bottom_border gt_right" data-quarto-table-cell-role="th" scope="col">num_cells_after</th>
+</tr>
+</thead>
+<tbody class="gt_table_body">
+<tr class="odd">
+<td class="gt_row gt_left" headers="cell_id">CX1</td>
+<td class="gt_row gt_center" headers="treated">TRUE</td>
+<td class="gt_row gt_right" headers="num_cells_before">5415</td>
+<td class="gt_row gt_right" headers="num_cells_after">1432</td>
+</tr>
+<tr class="even">
+<td class="gt_row gt_left" headers="cell_id">CX2</td>
+<td class="gt_row gt_center" headers="treated">FALSE</td>
+<td class="gt_row gt_right" headers="num_cells_before">8123</td>
+<td class="gt_row gt_right" headers="num_cells_after">7543</td>
+</tr>
+</tbody>
+</table>
+
+</div>
+</div>
+</div>
+<div class="cell">
+<div class="code-copy-outer-scaffold"><div class="sourceCode cell-code" id="cb39"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb39-1"><a href="#cb39-1" aria-hidden="true" tabindex="-1"></a>weather <span class="ot">&lt;-</span> <span class="fu">read_csv</span>(<span class="st">"data/weather_data.csv"</span>)</span></code></pre></div><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></div>
+<div class="cell-output cell-output-stderr">
+<pre><code>Rows: 9 Columns: 10
+── Column specification ────────────────────────────────────────────────────────
+Delimiter: ","
+chr  (3): station_id, weather_condition, wind_direction
+dbl  (6): temperature_c, humidity_pct, wind_speed_kmh, pressure_hpa, precipi...
+dttm (1): observation_time
+
+ℹ Use `spec()` to retrieve the full column specification for this data.
+ℹ Specify the column types or set `show_col_types = FALSE` to quiet this message.</code></pre>
+</div>
+</div>
+<div class="cell">
+<div class="code-copy-outer-scaffold"><div class="sourceCode cell-code" id="cb41"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb41-1"><a href="#cb41-1" aria-hidden="true" tabindex="-1"></a><span class="fu">gt</span>(weather)</span></code></pre></div><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></div>
+<div class="cell-output-display">
+<div id="fxdyeccjrq" style="padding-left:0px;padding-right:0px;padding-top:10px;padding-bottom:10px;overflow-x:auto;overflow-y:auto;width:auto;height:auto;">
+<style>#fxdyeccjrq table {
+  font-family: system-ui, 'Segoe UI', Roboto, Helvetica, Arial, sans-serif, 'Apple Color Emoji', 'Segoe UI Emoji', 'Segoe UI Symbol', 'Noto Color Emoji';
+  -webkit-font-smoothing: antialiased;
+  -moz-osx-font-smoothing: grayscale;
+}
+
+#fxdyeccjrq thead, #fxdyeccjrq tbody, #fxdyeccjrq tfoot, #fxdyeccjrq tr, #fxdyeccjrq td, #fxdyeccjrq th {
+  border-style: none;
+}
+
+#fxdyeccjrq p {
+  margin: 0;
+  padding: 0;
+}
+
+#fxdyeccjrq .gt_table {
+  display: table;
+  border-collapse: collapse;
+  line-height: normal;
+  margin-left: auto;
+  margin-right: auto;
+  color: #333333;
+  font-size: 16px;
+  font-weight: normal;
+  font-style: normal;
+  background-color: #FFFFFF;
+  width: auto;
+  border-top-style: solid;
+  border-top-width: 2px;
+  border-top-color: #A8A8A8;
+  border-right-style: none;
+  border-right-width: 2px;
+  border-right-color: #D3D3D3;
+  border-bottom-style: solid;
+  border-bottom-width: 2px;
+  border-bottom-color: #A8A8A8;
+  border-left-style: none;
+  border-left-width: 2px;
+  border-left-color: #D3D3D3;
+}
+
+#fxdyeccjrq .gt_caption {
+  padding-top: 4px;
+  padding-bottom: 4px;
+}
+
+#fxdyeccjrq .gt_title {
+  color: #333333;
+  font-size: 125%;
+  font-weight: initial;
+  padding-top: 4px;
+  padding-bottom: 4px;
+  padding-left: 5px;
+  padding-right: 5px;
+  border-bottom-color: #FFFFFF;
+  border-bottom-width: 0;
+}
+
+#fxdyeccjrq .gt_subtitle {
+  color: #333333;
+  font-size: 85%;
+  font-weight: initial;
+  padding-top: 3px;
+  padding-bottom: 5px;
+  padding-left: 5px;
+  padding-right: 5px;
+  border-top-color: #FFFFFF;
+  border-top-width: 0;
+}
+
+#fxdyeccjrq .gt_heading {
+  background-color: #FFFFFF;
+  text-align: center;
+  border-bottom-color: #FFFFFF;
+  border-left-style: none;
+  border-left-width: 1px;
+  border-left-color: #D3D3D3;
+  border-right-style: none;
+  border-right-width: 1px;
+  border-right-color: #D3D3D3;
+}
+
+#fxdyeccjrq .gt_bottom_border {
+  border-bottom-style: solid;
+  border-bottom-width: 2px;
+  border-bottom-color: #D3D3D3;
+}
+
+#fxdyeccjrq .gt_col_headings {
+  border-top-style: solid;
+  border-top-width: 2px;
+  border-top-color: #D3D3D3;
+  border-bottom-style: solid;
+  border-bottom-width: 2px;
+  border-bottom-color: #D3D3D3;
+  border-left-style: none;
+  border-left-width: 1px;
+  border-left-color: #D3D3D3;
+  border-right-style: none;
+  border-right-width: 1px;
+  border-right-color: #D3D3D3;
+}
+
+#fxdyeccjrq .gt_col_heading {
+  color: #333333;
+  background-color: #FFFFFF;
+  font-size: 100%;
+  font-weight: normal;
+  text-transform: inherit;
+  border-left-style: none;
+  border-left-width: 1px;
+  border-left-color: #D3D3D3;
+  border-right-style: none;
+  border-right-width: 1px;
+  border-right-color: #D3D3D3;
+  vertical-align: bottom;
+  padding-top: 5px;
+  padding-bottom: 6px;
+  padding-left: 5px;
+  padding-right: 5px;
+  overflow-x: hidden;
+}
+
+#fxdyeccjrq .gt_column_spanner_outer {
+  color: #333333;
+  background-color: #FFFFFF;
+  font-size: 100%;
+  font-weight: normal;
+  text-transform: inherit;
+  padding-top: 0;
+  padding-bottom: 0;
+  padding-left: 4px;
+  padding-right: 4px;
+}
+
+#fxdyeccjrq .gt_column_spanner_outer:first-child {
+  padding-left: 0;
+}
+
+#fxdyeccjrq .gt_column_spanner_outer:last-child {
+  padding-right: 0;
+}
+
+#fxdyeccjrq .gt_column_spanner {
+  border-bottom-style: solid;
+  border-bottom-width: 2px;
+  border-bottom-color: #D3D3D3;
+  vertical-align: bottom;
+  padding-top: 5px;
+  padding-bottom: 5px;
+  overflow-x: hidden;
+  display: inline-block;
+  width: 100%;
+}
+
+#fxdyeccjrq .gt_spanner_row {
+  border-bottom-style: hidden;
+}
+
+#fxdyeccjrq .gt_group_heading {
+  padding-top: 8px;
+  padding-bottom: 8px;
+  padding-left: 5px;
+  padding-right: 5px;
+  color: #333333;
+  background-color: #FFFFFF;
+  font-size: 100%;
+  font-weight: initial;
+  text-transform: inherit;
+  border-top-style: solid;
+  border-top-width: 2px;
+  border-top-color: #D3D3D3;
+  border-bottom-style: solid;
+  border-bottom-width: 2px;
+  border-bottom-color: #D3D3D3;
+  border-left-style: none;
+  border-left-width: 1px;
+  border-left-color: #D3D3D3;
+  border-right-style: none;
+  border-right-width: 1px;
+  border-right-color: #D3D3D3;
+  vertical-align: middle;
+  text-align: left;
+}
+
+#fxdyeccjrq .gt_empty_group_heading {
+  padding: 0.5px;
+  color: #333333;
+  background-color: #FFFFFF;
+  font-size: 100%;
+  font-weight: initial;
+  border-top-style: solid;
+  border-top-width: 2px;
+  border-top-color: #D3D3D3;
+  border-bottom-style: solid;
+  border-bottom-width: 2px;
+  border-bottom-color: #D3D3D3;
+  vertical-align: middle;
+}
+
+#fxdyeccjrq .gt_from_md > :first-child {
+  margin-top: 0;
+}
+
+#fxdyeccjrq .gt_from_md > :last-child {
+  margin-bottom: 0;
+}
+
+#fxdyeccjrq .gt_row {
+  padding-top: 8px;
+  padding-bottom: 8px;
+  padding-left: 5px;
+  padding-right: 5px;
+  margin: 10px;
+  border-top-style: solid;
+  border-top-width: 1px;
+  border-top-color: #D3D3D3;
+  border-left-style: none;
+  border-left-width: 1px;
+  border-left-color: #D3D3D3;
+  border-right-style: none;
+  border-right-width: 1px;
+  border-right-color: #D3D3D3;
+  vertical-align: middle;
+  overflow-x: hidden;
+}
+
+#fxdyeccjrq .gt_stub {
+  color: #333333;
+  background-color: #FFFFFF;
+  font-size: 100%;
+  font-weight: initial;
+  text-transform: inherit;
+  border-right-style: solid;
+  border-right-width: 2px;
+  border-right-color: #D3D3D3;
+  padding-left: 5px;
+  padding-right: 5px;
+}
+
+#fxdyeccjrq .gt_stub_row_group {
+  color: #333333;
+  background-color: #FFFFFF;
+  font-size: 100%;
+  font-weight: initial;
+  text-transform: inherit;
+  border-right-style: solid;
+  border-right-width: 2px;
+  border-right-color: #D3D3D3;
+  padding-left: 5px;
+  padding-right: 5px;
+  vertical-align: top;
+}
+
+#fxdyeccjrq .gt_row_group_first td {
+  border-top-width: 2px;
+}
+
+#fxdyeccjrq .gt_row_group_first th {
+  border-top-width: 2px;
+}
+
+#fxdyeccjrq .gt_summary_row {
+  color: #333333;
+  background-color: #FFFFFF;
+  text-transform: inherit;
+  padding-top: 8px;
+  padding-bottom: 8px;
+  padding-left: 5px;
+  padding-right: 5px;
+}
+
+#fxdyeccjrq .gt_first_summary_row {
+  border-top-style: solid;
+  border-top-color: #D3D3D3;
+}
+
+#fxdyeccjrq .gt_first_summary_row.thick {
+  border-top-width: 2px;
+}
+
+#fxdyeccjrq .gt_last_summary_row {
+  padding-top: 8px;
+  padding-bottom: 8px;
+  padding-left: 5px;
+  padding-right: 5px;
+  border-bottom-style: solid;
+  border-bottom-width: 2px;
+  border-bottom-color: #D3D3D3;
+}
+
+#fxdyeccjrq .gt_grand_summary_row {
+  color: #333333;
+  background-color: #FFFFFF;
+  text-transform: inherit;
+  padding-top: 8px;
+  padding-bottom: 8px;
+  padding-left: 5px;
+  padding-right: 5px;
+}
+
+#fxdyeccjrq .gt_first_grand_summary_row {
+  padding-top: 8px;
+  padding-bottom: 8px;
+  padding-left: 5px;
+  padding-right: 5px;
+  border-top-style: double;
+  border-top-width: 6px;
+  border-top-color: #D3D3D3;
+}
+
+#fxdyeccjrq .gt_last_grand_summary_row_top {
+  padding-top: 8px;
+  padding-bottom: 8px;
+  padding-left: 5px;
+  padding-right: 5px;
+  border-bottom-style: double;
+  border-bottom-width: 6px;
+  border-bottom-color: #D3D3D3;
+}
+
+#fxdyeccjrq .gt_striped {
+  background-color: rgba(128, 128, 128, 0.05);
+}
+
+#fxdyeccjrq .gt_table_body {
+  border-top-style: solid;
+  border-top-width: 2px;
+  border-top-color: #D3D3D3;
+  border-bottom-style: solid;
+  border-bottom-width: 2px;
+  border-bottom-color: #D3D3D3;
+}
+
+#fxdyeccjrq .gt_footnotes {
+  color: #333333;
+  background-color: #FFFFFF;
+  border-bottom-style: none;
+  border-bottom-width: 2px;
+  border-bottom-color: #D3D3D3;
+  border-left-style: none;
+  border-left-width: 2px;
+  border-left-color: #D3D3D3;
+  border-right-style: none;
+  border-right-width: 2px;
+  border-right-color: #D3D3D3;
+}
+
+#fxdyeccjrq .gt_footnote {
+  margin: 0px;
+  font-size: 90%;
+  padding-top: 4px;
+  padding-bottom: 4px;
+  padding-left: 5px;
+  padding-right: 5px;
+}
+
+#fxdyeccjrq .gt_sourcenotes {
+  color: #333333;
+  background-color: #FFFFFF;
+  border-bottom-style: none;
+  border-bottom-width: 2px;
+  border-bottom-color: #D3D3D3;
+  border-left-style: none;
+  border-left-width: 2px;
+  border-left-color: #D3D3D3;
+  border-right-style: none;
+  border-right-width: 2px;
+  border-right-color: #D3D3D3;
+}
+
+#fxdyeccjrq .gt_sourcenote {
+  font-size: 90%;
+  padding-top: 4px;
+  padding-bottom: 4px;
+  padding-left: 5px;
+  padding-right: 5px;
+}
+
+#fxdyeccjrq .gt_left {
+  text-align: left;
+}
+
+#fxdyeccjrq .gt_center {
+  text-align: center;
+}
+
+#fxdyeccjrq .gt_right {
+  text-align: right;
+  font-variant-numeric: tabular-nums;
+}
+
+#fxdyeccjrq .gt_font_normal {
+  font-weight: normal;
+}
+
+#fxdyeccjrq .gt_font_bold {
+  font-weight: bold;
+}
+
+#fxdyeccjrq .gt_font_italic {
+  font-style: italic;
+}
+
+#fxdyeccjrq .gt_super {
+  font-size: 65%;
+}
+
+#fxdyeccjrq .gt_footnote_marks {
+  font-size: 75%;
+  vertical-align: 0.4em;
+  position: initial;
+}
+
+#fxdyeccjrq .gt_asterisk {
+  font-size: 100%;
+  vertical-align: 0;
+}
+
+#fxdyeccjrq .gt_indent_1 {
+  text-indent: 5px;
+}
+
+#fxdyeccjrq .gt_indent_2 {
+  text-indent: 10px;
+}
+
+#fxdyeccjrq .gt_indent_3 {
+  text-indent: 15px;
+}
+
+#fxdyeccjrq .gt_indent_4 {
+  text-indent: 20px;
+}
+
+#fxdyeccjrq .gt_indent_5 {
+  text-indent: 25px;
+}
+
+#fxdyeccjrq .katex-display {
+  display: inline-flex !important;
+  margin-bottom: 0.75em !important;
+}
+
+#fxdyeccjrq div.Reactable > div.rt-table > div.rt-thead > div.rt-tr.rt-tr-group-header > div.rt-th-group:after {
+  height: 0px !important;
+}
+</style>
+
+<table class="gt_table caption-top table table-sm table-striped small" data-quarto-bootstrap="false">
+<thead>
+<tr class="gt_col_headings header">
+<th id="station_id" class="gt_col_heading gt_columns_bottom_border gt_left" data-quarto-table-cell-role="th" scope="col">station_id</th>
+<th id="observation_time" class="gt_col_heading gt_columns_bottom_border gt_right" data-quarto-table-cell-role="th" scope="col">observation_time</th>
+<th id="temperature_c" class="gt_col_heading gt_columns_bottom_border gt_right" data-quarto-table-cell-role="th" scope="col">temperature_c</th>
+<th id="humidity_pct" class="gt_col_heading gt_columns_bottom_border gt_right" data-quarto-table-cell-role="th" scope="col">humidity_pct</th>
+<th id="wind_speed_kmh" class="gt_col_heading gt_columns_bottom_border gt_right" data-quarto-table-cell-role="th" scope="col">wind_speed_kmh</th>
+<th id="pressure_hpa" class="gt_col_heading gt_columns_bottom_border gt_right" data-quarto-table-cell-role="th" scope="col">pressure_hpa</th>
+<th id="precipitation_mm" class="gt_col_heading gt_columns_bottom_border gt_right" data-quarto-table-cell-role="th" scope="col">precipitation_mm</th>
+<th id="cloud_cover_pct" class="gt_col_heading gt_columns_bottom_border gt_right" data-quarto-table-cell-role="th" scope="col">cloud_cover_pct</th>
+<th id="weather_condition" class="gt_col_heading gt_columns_bottom_border gt_left" data-quarto-table-cell-role="th" scope="col">weather_condition</th>
+<th id="wind_direction" class="gt_col_heading gt_columns_bottom_border gt_left" data-quarto-table-cell-role="th" scope="col">wind_direction</th>
+</tr>
+</thead>
+<tbody class="gt_table_body">
+<tr class="odd">
+<td class="gt_row gt_left" headers="station_id">CAM001</td>
+<td class="gt_row gt_right" headers="observation_time">2026-07-01 06:00:00</td>
+<td class="gt_row gt_right" headers="temperature_c">14.2</td>
+<td class="gt_row gt_right" headers="humidity_pct">88</td>
+<td class="gt_row gt_right" headers="wind_speed_kmh">8.4</td>
+<td class="gt_row gt_right" headers="pressure_hpa">1017.3</td>
+<td class="gt_row gt_right" headers="precipitation_mm">0.0</td>
+<td class="gt_row gt_right" headers="cloud_cover_pct">75</td>
+<td class="gt_row gt_left" headers="weather_condition">Cloudy</td>
+<td class="gt_row gt_left" headers="wind_direction">SW</td>
+</tr>
+<tr class="even">
+<td class="gt_row gt_left" headers="station_id">CAM001</td>
+<td class="gt_row gt_right" headers="observation_time">2026-07-01 12:00:00</td>
+<td class="gt_row gt_right" headers="temperature_c">20.1</td>
+<td class="gt_row gt_right" headers="humidity_pct">61</td>
+<td class="gt_row gt_right" headers="wind_speed_kmh">12.7</td>
+<td class="gt_row gt_right" headers="pressure_hpa">1016.5</td>
+<td class="gt_row gt_right" headers="precipitation_mm">0.0</td>
+<td class="gt_row gt_right" headers="cloud_cover_pct">40</td>
+<td class="gt_row gt_left" headers="weather_condition">Partly Cloudy</td>
+<td class="gt_row gt_left" headers="wind_direction">W</td>
+</tr>
+<tr class="odd">
+<td class="gt_row gt_left" headers="station_id">CAM001</td>
+<td class="gt_row gt_right" headers="observation_time">2026-07-01 18:00:00</td>
+<td class="gt_row gt_right" headers="temperature_c">18.7</td>
+<td class="gt_row gt_right" headers="humidity_pct">68</td>
+<td class="gt_row gt_right" headers="wind_speed_kmh">10.2</td>
+<td class="gt_row gt_right" headers="pressure_hpa">1015.9</td>
+<td class="gt_row gt_right" headers="precipitation_mm">0.4</td>
+<td class="gt_row gt_right" headers="cloud_cover_pct">60</td>
+<td class="gt_row gt_left" headers="weather_condition">Light Rain</td>
+<td class="gt_row gt_left" headers="wind_direction">W</td>
+</tr>
+<tr class="even">
+<td class="gt_row gt_left" headers="station_id">CAM001</td>
+<td class="gt_row gt_right" headers="observation_time">2026-07-02 06:00:00</td>
+<td class="gt_row gt_right" headers="temperature_c">13.5</td>
+<td class="gt_row gt_right" headers="humidity_pct">91</td>
+<td class="gt_row gt_right" headers="wind_speed_kmh">6.8</td>
+<td class="gt_row gt_right" headers="pressure_hpa">1014.8</td>
+<td class="gt_row gt_right" headers="precipitation_mm">1.2</td>
+<td class="gt_row gt_right" headers="cloud_cover_pct">95</td>
+<td class="gt_row gt_left" headers="weather_condition">Overcast</td>
+<td class="gt_row gt_left" headers="wind_direction">S</td>
+</tr>
+<tr class="odd">
+<td class="gt_row gt_left" headers="station_id">CAM001</td>
+<td class="gt_row gt_right" headers="observation_time">2026-07-02 12:00:00</td>
+<td class="gt_row gt_right" headers="temperature_c">17.8</td>
+<td class="gt_row gt_right" headers="humidity_pct">74</td>
+<td class="gt_row gt_right" headers="wind_speed_kmh">14.1</td>
+<td class="gt_row gt_right" headers="pressure_hpa">1013.6</td>
+<td class="gt_row gt_right" headers="precipitation_mm">0.0</td>
+<td class="gt_row gt_right" headers="cloud_cover_pct">70</td>
+<td class="gt_row gt_left" headers="weather_condition">Cloudy</td>
+<td class="gt_row gt_left" headers="wind_direction">SW</td>
+</tr>
+<tr class="even">
+<td class="gt_row gt_left" headers="station_id">CAM001</td>
+<td class="gt_row gt_right" headers="observation_time">2026-07-02 18:00:00</td>
+<td class="gt_row gt_right" headers="temperature_c">16.9</td>
+<td class="gt_row gt_right" headers="humidity_pct">79</td>
+<td class="gt_row gt_right" headers="wind_speed_kmh">11.3</td>
+<td class="gt_row gt_right" headers="pressure_hpa">1012.9</td>
+<td class="gt_row gt_right" headers="precipitation_mm">2.8</td>
+<td class="gt_row gt_right" headers="cloud_cover_pct">90</td>
+<td class="gt_row gt_left" headers="weather_condition">Rain</td>
+<td class="gt_row gt_left" headers="wind_direction">SW</td>
+</tr>
+<tr class="odd">
+<td class="gt_row gt_left" headers="station_id">CAM001</td>
+<td class="gt_row gt_right" headers="observation_time">2026-07-03 06:00:00</td>
+<td class="gt_row gt_right" headers="temperature_c">12.8</td>
+<td class="gt_row gt_right" headers="humidity_pct">93</td>
+<td class="gt_row gt_right" headers="wind_speed_kmh">4.5</td>
+<td class="gt_row gt_right" headers="pressure_hpa">1018.1</td>
+<td class="gt_row gt_right" headers="precipitation_mm">0.0</td>
+<td class="gt_row gt_right" headers="cloud_cover_pct">30</td>
+<td class="gt_row gt_left" headers="weather_condition">Clear</td>
+<td class="gt_row gt_left" headers="wind_direction">E</td>
+</tr>
+<tr class="even">
+<td class="gt_row gt_left" headers="station_id">CAM001</td>
+<td class="gt_row gt_right" headers="observation_time">2026-07-03 12:00:00</td>
+<td class="gt_row gt_right" headers="temperature_c">22.4</td>
+<td class="gt_row gt_right" headers="humidity_pct">52</td>
+<td class="gt_row gt_right" headers="wind_speed_kmh">9.6</td>
+<td class="gt_row gt_right" headers="pressure_hpa">1019.4</td>
+<td class="gt_row gt_right" headers="precipitation_mm">0.0</td>
+<td class="gt_row gt_right" headers="cloud_cover_pct">10</td>
+<td class="gt_row gt_left" headers="weather_condition">Sunny</td>
+<td class="gt_row gt_left" headers="wind_direction">NE</td>
+</tr>
+<tr class="odd">
+<td class="gt_row gt_left" headers="station_id">CAM001</td>
+<td class="gt_row gt_right" headers="observation_time">2026-07-03 18:00:00</td>
+<td class="gt_row gt_right" headers="temperature_c">21.0</td>
+<td class="gt_row gt_right" headers="humidity_pct">58</td>
+<td class="gt_row gt_right" headers="wind_speed_kmh">8.7</td>
+<td class="gt_row gt_right" headers="pressure_hpa">1018.7</td>
+<td class="gt_row gt_right" headers="precipitation_mm">0.0</td>
+<td class="gt_row gt_right" headers="cloud_cover_pct">15</td>
+<td class="gt_row gt_left" headers="weather_condition">Sunny</td>
+<td class="gt_row gt_left" headers="wind_direction">NE</td>
+</tr>
+</tbody>
+</table>
+
+</div>
+</div>
+</div>
+<div class="cell">
+<div class="code-copy-outer-scaffold"><div class="sourceCode cell-code" id="cb42"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb42-1"><a href="#cb42-1" aria-hidden="true" tabindex="-1"></a><span class="fu">ggplot</span>(weather)</span></code></pre></div><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></div>
+<div class="cell-output-display">
+<div>
+<figure class="figure">
+<p><img src="prac1_exercises_files/figure-html/unnamed-chunk-13-1.png" class="img-fluid figure-img" width="672"></p>
+</figure>
+</div>
+</div>
+<div class="code-copy-outer-scaffold"><div class="sourceCode cell-code" id="cb43"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb43-1"><a href="#cb43-1" aria-hidden="true" tabindex="-1"></a><span class="fu">ggplot</span>(weather, <span class="fu">aes</span>(</span>
+<span id="cb43-2"><a href="#cb43-2" aria-hidden="true" tabindex="-1"></a>  <span class="at">x =</span> observation_time,</span>
+<span id="cb43-3"><a href="#cb43-3" aria-hidden="true" tabindex="-1"></a>  <span class="at">y =</span> temperature_c</span>
+<span id="cb43-4"><a href="#cb43-4" aria-hidden="true" tabindex="-1"></a>))</span></code></pre></div><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></div>
+<div class="cell-output-display">
+<div>
+<figure class="figure">
+<p><img src="prac1_exercises_files/figure-html/unnamed-chunk-13-2.png" class="img-fluid figure-img" width="672"></p>
+</figure>
+</div>
+</div>
+</div>
+<div class="cell">
+<div class="code-copy-outer-scaffold"><div class="sourceCode cell-code" id="cb44"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb44-1"><a href="#cb44-1" aria-hidden="true" tabindex="-1"></a><span class="fu">ggplot</span>(weather, <span class="fu">aes</span>(</span>
+<span id="cb44-2"><a href="#cb44-2" aria-hidden="true" tabindex="-1"></a>  <span class="at">x =</span> observation_time,</span>
+<span id="cb44-3"><a href="#cb44-3" aria-hidden="true" tabindex="-1"></a>  <span class="at">y =</span> temperature_c</span>
+<span id="cb44-4"><a href="#cb44-4" aria-hidden="true" tabindex="-1"></a>)) <span class="sc">+</span></span>
+<span id="cb44-5"><a href="#cb44-5" aria-hidden="true" tabindex="-1"></a>  <span class="fu">geom_line</span>()</span></code></pre></div><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></div>
+<div class="cell-output-display">
+<div>
+<figure class="figure">
+<p><img src="prac1_exercises_files/figure-html/unnamed-chunk-14-1.png" class="img-fluid figure-img" width="672"></p>
+</figure>
+</div>
+</div>
+</div>
+<div class="cell">
+<div class="code-copy-outer-scaffold"><div class="sourceCode cell-code" id="cb45"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb45-1"><a href="#cb45-1" aria-hidden="true" tabindex="-1"></a><span class="fu">ggplot</span>(weather, <span class="fu">aes</span>(</span>
+<span id="cb45-2"><a href="#cb45-2" aria-hidden="true" tabindex="-1"></a>  <span class="at">x =</span> observation_time,</span>
+<span id="cb45-3"><a href="#cb45-3" aria-hidden="true" tabindex="-1"></a>  <span class="at">y =</span> temperature_c</span>
+<span id="cb45-4"><a href="#cb45-4" aria-hidden="true" tabindex="-1"></a>)) <span class="sc">+</span></span>
+<span id="cb45-5"><a href="#cb45-5" aria-hidden="true" tabindex="-1"></a>  <span class="fu">geom_line</span>(<span class="at">colour =</span> <span class="st">"red"</span>) <span class="sc">+</span></span>
+<span id="cb45-6"><a href="#cb45-6" aria-hidden="true" tabindex="-1"></a>  <span class="fu">xlab</span>(<span class="st">"Date"</span>) <span class="sc">+</span></span>
+<span id="cb45-7"><a href="#cb45-7" aria-hidden="true" tabindex="-1"></a>  <span class="fu">ylab</span>(<span class="st">"Temp (C)"</span>) <span class="sc">+</span></span>
+<span id="cb45-8"><a href="#cb45-8" aria-hidden="true" tabindex="-1"></a>  <span class="fu">ggtitle</span>(<span class="st">"Temperature by Date"</span>)</span></code></pre></div><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></div>
+<div class="cell-output-display">
+<div>
+<figure class="figure">
+<p><img src="prac1_exercises_files/figure-html/unnamed-chunk-15-1.png" class="img-fluid figure-img" width="672"></p>
+</figure>
+</div>
+</div>
+</div>
 
 </main>
 <!-- /main column -->
