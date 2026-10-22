@@ -1,0 +1,19 @@
+---
+title: "hpa_quarto"
+author: "Jierui wang"
+---
+
+calculate total number of genes with regionally elevated expression in forebrain = cerebral cortex, basal ganglia, thalamus and hypothalamus
+regions in human, pig and mouse.
+
+```{r}
+h <- sum(180,83,57,110)
+p <- sum(109,157,31,45)
+m <- sum(55,185,60,98)
+
+print(paste("the total number of genes in human is", h))
+print(paste("the total number of genes in pig is", p))
+print(paste("the total number of genes in mouse is", m))
+```
+
+The highest number of genes with elevated expression was 430, in humans.
